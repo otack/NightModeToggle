@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ナイトモード設定切替</string>
+    <string name="app_label">ナイトモード</string>
+    <string name="prepare_description">はじめに、次のコマンドを実行してこのアプリに権限を付与してください。</string>
+    <string name="permission_not_granted">権限が付与されていません</string>
+    <string name="toggle_btn">ナイトモードを切り替える</string>
+    <string name="toggle_tile">ナイトモード</string>
+</resources>

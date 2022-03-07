@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Night Mode Toggle</string>
+    <string name="app_label">Night Mode</string>
+    <string name="prepare_description">First, run the following command to grant permissions to this app.</string>
+    <string name="grant_permission_command" translatable="false">adb shell pm grant dev.copin.nightmodetoggle android.permission.WRITE_SECURE_SETTINGS</string>
+    <string name="permission_not_granted">Permission not granted</string>
+    <string name="toggle_btn">Toggle Night Mode</string>
+    <string name="toggle_tile">Night Mode</string>
+</resources>
