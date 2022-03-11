@@ -38,7 +38,9 @@ class NightModeTileService : TileService() {
     }
 
     private fun update() {
-        qsTile.state = if (NightModeHelper.isInNightMode(applicationContext)) {
+        qsTile.state = if (!NightModeHelper.checkPermissionGranted(applicationContext)) {
+            Tile.STATE_UNAVAILABLE
+        } else if (NightModeHelper.isInNightMode(applicationContext)) {
             Tile.STATE_ACTIVE
         } else {
             Tile.STATE_INACTIVE
