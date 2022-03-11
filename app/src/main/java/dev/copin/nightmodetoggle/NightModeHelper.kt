@@ -45,8 +45,7 @@ object NightModeHelper {
             }
             UiModeManager.MODE_NIGHT_CUSTOM -> {
                 return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                    val current = LocalTime.now()
-                    if (uiModeManager.customNightModeStart <= current && current < uiModeManager.customNightModeEnd) {
+                    if (isInNightModeCustom(context)) {
                         // Night Mode is currently ON.
                         Settings.Secure.getInt(context.contentResolver, SETTINGS_SECURE_KEY_UI_NIGHT_MODE_OVERRIDE_OFF, 0) == 0
                     } else {
@@ -59,6 +58,16 @@ object NightModeHelper {
             }
         }
         return false
+    }
+
+    @RequiresApi(Build.VERSION_CODES.R)
+    private fun isInNightModeCustom(context: Context): Boolean {
+        val uiModeManager = context.getSystemService(UiModeManager::class.java)
+        val current = LocalTime.now()
+        val start = uiModeManager.customNightModeStart
+        val end = uiModeManager.customNightModeEnd
+        return (start <= end && start <= current && current < end) ||
+                (end < start && current < end || start <= current)
     }
 
     fun toggleNightMode(context: Context) {
@@ -101,9 +110,7 @@ object NightModeHelper {
 
     @RequiresApi(Build.VERSION_CODES.R)
     private fun toggleNightModeOverride(context: Context) {
-        val uiModeManager = context.getSystemService(UiModeManager::class.java)
-        val current = LocalTime.now()
-        if (uiModeManager.customNightModeStart <= current && current < uiModeManager.customNightModeEnd) {
+        if (isInNightModeCustom(context)) {
             // Night Mode is currently ON.
             if (Settings.Secure.getInt(context.contentResolver, SETTINGS_SECURE_KEY_UI_NIGHT_MODE_OVERRIDE_OFF, 0) != 0) {
                 // Reset if already overridden.
