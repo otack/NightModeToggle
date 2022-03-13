@@ -16,8 +16,12 @@
 
 package dev.copin.nightmodetoggle
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +32,22 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.btnToggle).setOnClickListener {
             NightModeHelper.toggleNightMode(applicationContext)
+        }
+
+        findViewById<Button>(R.id.btnCopyCommand).setOnClickListener {
+            val clipData = ClipData.newPlainText("nightmodetoggle_permission_command",
+                getString(R.string.grant_permission_command))
+            getSystemService(ClipboardManager::class.java).setPrimaryClip(clipData)
+            Toast.makeText(this, R.string.command_copied, Toast.LENGTH_SHORT).show()
+        }
+
+        findViewById<Button>(R.id.btnShareCommand).setOnClickListener {
+            val intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, getString(R.string.grant_permission_command))
+            }
+            startActivity(Intent.createChooser(intent, null))
         }
     }
 
