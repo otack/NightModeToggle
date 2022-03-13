@@ -8,6 +8,7 @@
     <string name="command_copied">Command copied</string>
     <string name="share">Share</string>
     <string name="permission_not_granted">Permission not granted</string>
+    <string name="version_name_prefix">Ver.</string>
     <string name="toggle_btn">Toggle Night Mode</string>
     <string name="toggle_tile">Night Mode</string>
 </resources>
