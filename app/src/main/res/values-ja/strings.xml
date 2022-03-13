@@ -8,6 +8,7 @@
     <string name="share">共有</string>
     <string name="permission_not_granted">権限が付与されていません</string>
     <string name="version_name_prefix">バージョン&#160;</string>
+    <string name="source_code">ソースコード</string>
     <string name="toggle_btn">ナイトモードを切り替える</string>
     <string name="toggle_tile">ナイトモード</string>
 </resources>

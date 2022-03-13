@@ -19,7 +19,10 @@ package dev.copin.nightmodetoggle
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -64,6 +67,22 @@ class MainActivity : AppCompatActivity() {
         } else {
             btn.isEnabled = false
             btn.text = getString(R.string.permission_not_granted)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.source_code -> {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.source_code_url)))
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }
