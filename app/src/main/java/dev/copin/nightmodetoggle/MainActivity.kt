@@ -77,6 +77,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.privacy_policy -> {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.privacy_policy_url)))
+                startActivity(intent)
+                true
+            }
             R.id.source_code -> {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.source_code_url)))
                 startActivity(intent)

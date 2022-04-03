@@ -9,6 +9,8 @@
     <string name="share">Share</string>
     <string name="permission_not_granted">Permission not granted</string>
     <string name="version_name_prefix">Ver.</string>
+    <string name="privacy_policy">Source code</string>
+    <string name="privacy_policy_url" translatable="false">https://copin.dev/nightmodetoggle/privacy/</string>
     <string name="source_code">Source code</string>
     <string name="source_code_url" translatable="false">https://github.com/otack/NightModeToggle</string>
     <string name="toggle_btn">Toggle Night Mode</string>
